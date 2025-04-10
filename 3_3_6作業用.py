@@ -76,4 +76,9 @@ if st.button("情報を取得"):
         # レスポンスの表示（API のレスポンス形式に合わせて調整してください）
         st.subheader("取得した情報")
         # ここでは、response の内容をシンプルに表示
-        st.write(result)
+        try:
+            # コンテンツだけ抽出して表示
+            content = result.choices[0].message.content
+            st.markdown(content)
+        except Exception as e:
+            st.error(f"表示中にエラーが発生しました: {e}")
